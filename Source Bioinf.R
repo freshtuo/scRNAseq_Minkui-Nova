@@ -21,7 +21,7 @@ basedir <- "/Users/novawang/testdir/scRNA-seq"
 #basedir <- "/Users/freshtuo/Work/SingleCell/DropSeq" "/Users/novawang/testdir/Bioinformatics"
 workdir <- paste(basedir, "DropSeq_MJ_171005", sep="\\")
 cellcyclegenes <- "D:\\Tools\\Seurat\\CellCycles.v2\\regev_lab_cell_cycle_genes.uppercase.txt"
-countfile <- paste(basedir, "counts.merged.clean.with_MT.no_zero_counts_genes.txt.gz", sep="\\")
+countfile <- countfile <- file.path(basedir, "counts.merged.clean.with_MT.no_zero_counts_genes.txt.gz")
 infodir <- paste(workdir, "info", sep="\\")
 figdir <- file.path(getwd(),"Plots")
 countsfile.forSPRING <- file.path(getwd(),"Spring","forSPRING.expression_data.tsv.gz")
