@@ -297,11 +297,14 @@ counts.forSPRING <- counts.forSPRING[rowSums(counts.forSPRING) > 0,]
 dim(counts.forSPRING)
 # 23489  4678
 # gene list file
-write.table(rownames(counts.forSPRING), file=file.path("Spring","forSPRING.gene_list.txt.gz"), row.names=FALSE, col.names=FALSE, quote=FALSE, na="")
+gene.file <- gzfile(file.path("Spring","forSPRING.gene_list.txt.gz"), 'w')
+write.table(rownames(counts.forSPRING), file=gene.file, row.names=FALSE, col.names=FALSE, quote=FALSE, na="")
 # cell info file
-write.table(t(matt@meta.data[,c("orig.ident"),drop=F]), file=file.path("Spring","forSPRING.cell_group.csv.gz"), row.names=T, col.names=F, quote=F, na="",sep=",")
+cell.file <- gzfile(file.path("Spring","forSPRING.cell_group.csv.gz"), 'w')
+write.table(t(matt@meta.data[,c("orig.ident"),drop=F]), file=cell.file, row.names=T, col.names=F, quote=F, na="",sep=",")
 # expression data
-write.table(as.data.frame(as.matrix(counts.forSPRING)), file=file.path("Spring","forSPRING.expression_data.tsv.gz"), row.names=T, col.names=NA, quote=F, na="", sep="\t")
+exp.file <- gzfile(file.path("Spring","forSPRING.expression_data.tsv.gz"), 'w')
+write.table(as.data.frame(as.matrix(counts.forSPRING)), file=exp.file, row.names=T, col.names=NA, quote=F, na="", sep="\t")
 
 # collect info for each cell
 cell.info <- matt@meta.data
